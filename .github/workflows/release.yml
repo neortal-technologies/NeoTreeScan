@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and attach EXE to release
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        run: dotnet restore NeoTreescan.sln
+
+      - name: Publish single-file EXE
+        run: >
+          dotnet publish src/NeoTreescan.App/NeoTreescan.App.csproj
+          -c Release
+          -o artifacts/publish
+
+      - name: Compute SHA256 checksum
+        shell: pwsh
+        run: |
+          $hash = Get-FileHash artifacts/publish/NeoTreescan.exe -Algorithm SHA256
+          "$($hash.Hash)  NeoTreescan.exe" | Out-File -Encoding ascii artifacts/publish/NeoTreescan.exe.sha256
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/publish/NeoTreescan.exe
+            artifacts/publish/NeoTreescan.exe.sha256
+          draft: true
+          generate_release_notes: true
+          fail_on_unmatched_files: true

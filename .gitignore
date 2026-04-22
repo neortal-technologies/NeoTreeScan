@@ -1,0 +1,59 @@
+# ---- Build output ----
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Rr]elease/
+[Dd]ebug/
+publish/
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.so
+*.dylib
+
+# ---- Visual Studio / Rider / VSCode ----
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.DotSettings.user
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ---- MSBuild / misc ----
+*.binlog
+*.log
+*.tlog
+*.ipdb
+*.iobj
+*.vspscc
+*.vssscc
+.builds
+MSBuild_Logs/
+StyleCopReport.xml
+TestResult.xml
+_ReSharper.*/
+
+# ---- OS ----
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# ---- Project-specific artifacts ----
+NeoTreescan_*.xlsx

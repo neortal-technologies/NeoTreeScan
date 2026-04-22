@@ -1,0 +1,78 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report. Please fill in every
+        field below. Incomplete reports will be closed.
+
+        Before filing, please search existing issues to avoid duplicates.
+
+  - type: input
+    id: version
+    attributes:
+      label: NeoTreescan version
+      description: Help > About, or the filename of the EXE you downloaded.
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      description: Run `winver` and paste the version and build.
+      placeholder: "Windows 11 23H2, build 22631.3447"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: admin
+    attributes:
+      label: Were you running as Administrator?
+      options:
+        - "No"
+        - "Yes"
+        - "Not sure"
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered list of exact steps.
+      placeholder: |
+        1. Launch NeoTreescan.exe
+        2. Browse to C:\
+        3. Press Scan
+        4. Click the Export to Excel button
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include any error message text, screenshots, or stack traces.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might be relevant (disk type, network share path patterns, unusually large scan targets, etc.).
+    validations:
+      required: false
