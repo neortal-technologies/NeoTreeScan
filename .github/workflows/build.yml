@@ -20,7 +20,7 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Restore
-        run: dotnet restore NeoTreescan.sln
+        run: dotnet restore NeoTreescan.sln -r win-x64
 
       - name: Build (Release)
         run: dotnet build NeoTreescan.sln -c Release --no-restore /warnaserror
